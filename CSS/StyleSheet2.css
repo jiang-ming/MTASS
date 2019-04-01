@@ -1,0 +1,607 @@
+﻿/*
+
+    CSS class for ASP forms
+
+*/
+/* =============================
+   Standard Tag / Page element
+================================*/
+BODY
+{
+    font-family: arial,helvetica;
+	font-size: medium;
+	margin:0;
+	padding:0;
+}
+a
+{
+	text-decoration:none;
+}
+a:visited
+{
+	text-decoration:none;
+}
+a:hover
+{
+	text-decoration:underline;
+}
+a:active
+{
+	text-decoration:none;
+}
+body.linkcolor000066 a, body.linkcolor000066 a:visited, body.linkcolor000066 a:hover, body.linkcolor000066 a:active
+{
+	color: #0070C0;
+}
+.bannerLogo
+{
+    margin-right: 10px; /* move the logo to the left to avoid collision with nano scrollbar */
+}
+/* =============================
+   ASP tab
+================================*/
+#tabcontrol {
+	
+}
+#tabcontrol #tabs {
+	float: left;
+	padding:0;
+	margin:0 0 0 15px;
+	list-style:none;
+	line-height:1em;
+}
+#tabcontrol #tabs LI {
+	float: left;
+	margin:0;
+	padding:0;
+	list-style-image: none;
+}
+#tabcontrol #tabs .tabnormal A {
+	display:block;
+	color:#909090;
+	text-decoration:none;
+	font-weight:bold;
+	background:#E7F1F3;
+	margin:0;
+	padding: 8px 16px;
+	border-left:1px solid #fff;
+	border-top:1px solid #fff;
+	border-right:1px solid #aaa;
+}
+#tabcontrol #tabs .tabselected A {
+	display:block;
+	color:#ffffff;
+	text-decoration:none;
+	font-weight:bold;
+	background:#4A5C6A;
+	margin:0;
+	padding: 8px 16px;
+	border-left:1px solid #fff;
+	border-top:1px solid #fff;
+	border-right:1px solid #aaa;
+}
+#tabcontrol #tabs A:hover,
+#tabcontrol #tabs A:active {
+	background:#7797AC;
+	color: #ffffff;
+	text-decoration: none;
+}
+#tabcontrol #content {
+	float: left;
+	width: 100%;
+}
+.tabframe {
+	border: 1px solid #4A5C6A;
+	padding: 10px;
+}
+/* =============================
+   Panel
+================================*/
+.SectionPanel 
+{
+    
+}
+.PanelSpacingTopBottom
+{
+    margin-top: 12px; 
+    margin-bottom: 12px;
+}
+.PanelLeftMargin40
+{
+    margin-left: 40px;
+}
+.PanelRightMargin40
+{
+    margin-right: 40px;
+}
+.PanelLeftMargin20
+{
+    margin-left: 20px;
+}
+.PanelRightMargin20
+{
+    margin-right: 20px;
+}
+.PanelBottomMargin20
+{
+    margin-bottom: 20px;
+}
+.PanelAjaxCalendarPopupContainer
+{
+    position: relative;
+}
+.bottomParentDIV
+{
+    position: relative;
+    /* then use jquery to programatically aassign top margin */
+}
+/* ==============================================
+    greyout and pop-up iframe
+=================================================*/
+#pagegreyout
+{
+    display: none;
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 2147483640;
+    background: black;
+    background-color: Black;
+    filter: alpha(Opacity=60);
+    opacity: 0.60;
+    -moz-opacity: 0.60;
+    -khtml-opacity: 0.60;
+}
+* html #pagegreyout
+{
+    position: absolute;
+}
+#popupiframe
+{
+    display: none;
+    position: absolute;
+    left: 25px;
+    top: 25px;
+    right: 25px;
+    bottom: 25px;
+    z-index: 2147483641;
+    background: rgba(128,128,128,0.5);
+    border: 13px solid rgba(208,208,208,0.75);
+    border-radius: 13px;
+    -moz-border-radius: 13px;
+}
+#buttonclosepopup
+{
+    position: absolute;
+    right: -31px;
+    top: -31px;
+}
+#popupiframecontent
+{
+    width: 100%;
+    height: 100%;
+    border: 0px none transparent;
+    background: white;
+}
+.popupBody
+{
+    margin: 0;
+    background-color: White;
+}
+/* =============================
+   Table / Row Background color
+================================*/
+.divContentCenter
+{
+    text-align: center;
+}
+.TableThickBorder
+{
+    border-top-width: 2;
+    border-left-width: 2;
+    border-right-width: 2;
+    border-bottom-width: 2;
+    border-style:double;
+    border-collapse: separate; 
+    border-spacing: 2px;
+}    
+.TableBorderSpacing
+{
+    border-collapse: separate; 
+    border-spacing: 2px;
+}
+.TableFullWidth
+{
+    width: 100%;
+    table-layout: fixed;
+}
+.Table90Width
+{
+    width: 90%;
+}
+.TableCenterParent
+{
+    margin: 0 auto;
+}
+.BlackBorder
+{
+	border-right: black 1px solid;
+	border-top: black 1px solid;
+	border-left: black 1px solid;
+	border-bottom: black 1px solid;
+	border-collapse: collapse;
+}
+/* =============================
+   Font / Text
+================================*/
+.csswidth100
+{
+    width: 100%;
+}
+.PermitAspTitleBar
+{
+    position: relative; 
+    /*
+    background-color: DarkOliveGreen; 
+    background-color: #003768;
+    */
+    background-color: #003768;
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+}
+.PermitAspTitleBarText
+{
+	font-size: 1.33em;
+	font-family: Tahoma;
+	color:White;
+	font-weight:bold;
+	margin-left: 10px;
+}
+.divPageTitleCenter
+{
+    margin-top: 1em;
+    font-size: 3em;
+    /*
+    color: DarkSlateGrey;
+    color: #003768;
+    */
+    color: #003768;
+    text-align: center;
+}
+.divPageTitleCenter_small
+{
+    margin-top: 1em;
+    font-size: 2em;
+    /*
+    color: DarkSlateGrey;
+    color: #003768;
+    */
+    color: #003768;
+    text-align: center;
+}
+.divPageSubTitleCenter_small
+{
+    /*
+    color: DarkSlateGrey;
+    color: #003768;
+    */
+    font-size: 1.2em;
+    color: #003768;
+    text-align: center;
+    font-weight: bold;
+}
+/* ==============================================
+    jQuery Tab & child gridview
+=================================================*/
+.detailsview_tab_container 
+{
+    table-layout: fixed; /* prevent detailsview from extending beyond screen width.  we want to limit it to screen and have horizontal scrollbar show up */
+}
+.jquery_tab_control
+{
+    font-size:.83em;
+}
+.jquery_tab_control ul li a:focus 
+{
+    outline:none;
+}
+.t1common 
+{
+    height: 100%;
+    color: Black;
+    padding: 15px;
+    background: transparent ;
+}
+.subTableGridVieww2
+{
+    /* marker for jquery to get to parent DIV */
+}
+.subTableGridViewParentDIV
+{
+    /* this tweak allows horizontal scroll in the GridView container DIV */
+    overflow-x:auto;
+}
+.gridViewAddRecordPanel
+{
+    margin: 12px 0 12px 0; 
+    /*
+    border: 1px solid DarkOliveGreen; 
+    background-color: DarkSeaGreen; 
+    border: 1px solid #003768; 
+    background-color: #8da4b9; 
+    */
+    border: 1px solid #003768; 
+    background-color: #8da4b9; 
+    padding: 12px; 
+    position:relative;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+
+}
+.gridViewFilterPanel
+{
+    border: 1px solid #003768; 
+    background-color: #8da4b9; 
+    padding: 12px; 
+    position:relative;
+    border-radius: 4px;
+}
+/* ==============================================
+    Nano Scrollbar override
+=================================================*/
+.nano .content 
+{
+    padding: 0 0 0 0;
+}
+.nano .pane
+{
+    width: 10px;
+    background: rgba(0,0,0,0.50);
+}
+.nano .pane .slider
+{
+    background: rgba(255,255,255,0.75);
+}
+/* ==============================================
+    GridView / DetailsView button and message
+=================================================*/
+.btn2424
+{
+    width: 24px;
+    height: 24px;
+}
+.btn4848
+{
+    width: 48px;
+    height: 48px;
+}
+.mainGridCommandButtonImage
+{
+    border: 1px solid #dddddd;
+    padding: 2px;
+    border-radius: 4px;
+    margin-left: 4px;
+}
+.commandButtonImage
+{
+    vertical-align: middle;
+    width:24px;
+    height:24px;
+    border: 0px none transparent;
+}
+.commandButtonImageSmall
+{
+    vertical-align: middle;
+    width:20px;
+    height:20px;
+    border: 0px none transparent;
+}
+.commandButtonImageMedium
+{
+    vertical-align: middle;
+    width: 26px;
+    height: 26px;
+    border: 0px none transparent;
+}
+.commandShowMapButton 
+{
+    margin-left: 20px;
+}
+.message_bubble
+{
+	background: #F1FAA5;
+	border-radius: .6em;
+	border: 1px solid rgb(170,170,170);
+	color: rgb(51,51,51);
+	text-shadow: 0px 1px 0px rgb(255, 255, 255);
+	padding: 0.4em 15px;
+	display:block;
+	clear: both;
+	overflow:hidden;
+}
+.bottom-rounded-corners
+{
+    overflow:hidden;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+/* ==============================================
+    large menu icon button
+=================================================*/
+.menuContainer
+{
+    margin-top: 4em;
+    display: inline-block;
+}
+.menubutton
+{
+    width: 200px;
+    text-align: center;
+    float:left;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.menubuttonimage
+{
+    
+}
+.menubuttonimageDisabled
+{
+    opacity:0.3;
+    filter:alpha(opacity=30);
+}
+.menubuttontext
+{
+    font-size: 0.87em;
+}
+.menulargertext
+{
+    font-size: 0.92em;
+    font-weight: bold;
+}
+/* ==============================================
+    Search panel
+=================================================*/
+.searchCriteriaTableContainer
+{
+    
+}
+.searchCriteriaTable
+{
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+}
+.searchCriteriaTableMessageRow
+{
+    border-bottom: 0px none transparent !important;
+}
+.searchCriteriaTableMessageRow > div:nth-child(n)
+{
+    border:0px none transparent !important;
+}
+.searchCriteriaTableMessageRow + .ui-grid-a /* submit button row, immediately following message row */
+{
+    border-top: 0px none transparent !important; 
+    text-align: right !important;
+}
+.ddInlineSubmitButtonImage
+{
+    vertical-align: middle;
+    margin-top: -5px;
+}
+.tableSubmitButtonImage
+{
+    margin-right:5px !important;
+    margin-bottom: 5px !important;
+}
+.searchResultTable
+{
+    font-size: 0.87em;
+    width:100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.searchResultTableParentDIV
+{
+    border-radius: 4px;
+    border: 2px solid #DDDDDD;
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    width:800px;
+}
+.searchResultTableWideParentDIV
+{
+    border-radius: 4px;
+    border: 2px solid #DDDDDD;
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    width:95%;
+}
+/* Report_menu */
+.divHyperlinkMouseOver
+{
+    cursor: pointer;
+}
+.divHyperlinkMouseOver:nth-child(odd)
+{
+    background-color: #F0F0F0;
+}
+.divHyperlinkMouseOver:hover
+{
+    background-color: LightBlue;
+}
+/* ==============================================
+    report
+=================================================*/
+.reportTable
+{
+    font-size: 0.87em;
+    width:100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.reportBody
+{
+    margin: 0;
+    background-color: White;
+    /* min-width: 1350px; */
+}
+/* table report */
+.inline-icon
+{
+    vertical-align: bottom;
+    height: 20px;
+    border: 0px none transparent;
+}
+/* ==============================================
+    Gridview Tweaks
+=================================================*/
+.gridview_rounded_corner
+{
+    border-radius: 6px;
+    -moz-border-radius:6px;
+    -webkit-border-radius:6px;
+    overflow: hidden;
+}
+.gridview_width_percent_border_fix
+{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.gridview_rounded_corner tr:first-child td:first-child {
+    border-top-left-radius:6px;
+    -moz-border-radius-topleft:6px;
+    -webkit-border-top-left-radius:6px;
+}
+.gridview_rounded_corner tr:first-child td:last-child {
+    border-top-right-radius:6px;
+    -moz-border-radius-topright:6px;
+    -webkit-border-top-right-radius:6px;
+}
+.gridview_rounded_corner tr:last-child td:first-child {
+    border-bottom-left-radius:6px;
+    -moz-border-radius-bottomleft:6px;
+    -webkit-border-bottom-left-radius:6px;
+}
+
+.gridview_rounded_corner tr:last-child td:last-child {
+    border-bottom-right-radius:6px;
+    -moz-border-radius-bottomright:6px;
+    -webkit-border-bottom-right-radius:6px;
+}
+.clearplaceholder
+{
+    clear: both;
+    width: 0px !important;
+    height: 0px !important;
+    min-height: 0px !important;
+}

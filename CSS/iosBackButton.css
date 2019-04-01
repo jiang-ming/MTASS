@@ -1,0 +1,95 @@
+﻿/* ws note - this customization was taken from jqtouch. it is used to override jquerymobile button ui to create ios style (pointed) back button*/
+/* line 80, ../scss/include/_skeleton.scss */
+.iosbackbutton {
+  position: absolute !important;
+  overflow: hidden;
+  width: auto;
+  height: 30px;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 30px;
+  text-overflow: ellipsis;
+  text-decoration: none;
+  white-space: nowrap;
+  background: none;
+  bottom: 6px;
+  margin: 0;
+  padding: 0 10px;
+  color: #e2e3e3;
+  text-shadow: black 0 -1px 0;
+  -webkit-box-shadow: rgba(255, 255, 255, 0.2) 0 1px 0, rgba(0, 0, 0, 0.2) 0 1px 2px inset;
+  box-shadow: rgba(255, 255, 255, 0.2) 0 1px 0, rgba(0, 0, 0, 0.2) 0 1px 2px inset;
+  border: 1px solid black;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  background-image: none;
+  background-color: #0a0a0a;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #2f3031), color-stop(50%, #161717), color-stop(51%, #0a0a0a), color-stop(100%, #000000));
+  background-image: -webkit-linear-gradient(top, #2f3031, #161717 50%, #0a0a0a 51%, #000000);
+  background-image: linear-gradient(top, #2f3031, #161717 50%, #0a0a0a 51%, #000000);
+  max-width: 60px;
+  margin-left: 15px !important;
+  overflow: visible;
+  padding-left: 5px;
+  left: 6px;
+  right: auto;
+}
+/* line 107, ../scss/include/_skeleton.scss */
+.iosbackbutton.active {
+  border-color: black;
+  background-image: none;
+  background-color: black;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #262627), color-stop(50%, #0d0d0d), color-stop(51%, #000000), color-stop(100%, #000000));
+  background-image: -webkit-linear-gradient(top, #262627, #0d0d0d 50%, #000000 51%, #000000);
+  background-image: linear-gradient(top, #262627, #0d0d0d 50%, #000000 51%, #000000);
+  color: #d8d9d9;
+  text-shadow: black 0 -1px 0;
+}
+/* line 121, ../scss/include/_skeleton.scss */
+.iosbackbutton:after, .iosbackbutton:before {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 1px;
+  left: 1px;
+  -webkit-transform: rotate(45deg) translate3d(0.2px, 0, 0);
+  transform: rotate(45deg) translate3d(0.2px, 0, 0);
+  -webkit-transform-origin: 0 0;
+  transform-origin: 0 0;
+  background-image: none;
+  background-color: #0a0a0a;
+  background-image: -webkit-gradient(linear, 0% 0%, 100% 100%, color-stop(0%, #2f3031), color-stop(50%, #161717), color-stop(51%, #0a0a0a), color-stop(100%, #000000));
+  background-image: -webkit-linear-gradient(top left, #2f3031, #161717 50%, #0a0a0a 51%, #000000);
+  background-image: linear-gradient(top left, #2f3031, #161717 50%, #0a0a0a 51%, #000000);
+  background-size: 100% 98%;
+  -webkit-border-radius: 0 0 0 2px;
+  border-radius: 0 0 0 2px;
+  -webkit-mask-image: -webkit-linear-gradient(45deg, black, black 15px, rgba(0, 0, 0, 0) 15px);
+  -webkit-mask-image: -webkit-gradient(linear, left bottom, right top, from(black), color-stop(50%, black), color-stop(50%, rgba(0, 0, 0, 0)), to(rgba(0, 0, 0, 0)));
+  -webkit-mask-clip: border-box;
+  -webkit-background-clip: content-box;
+}
+/* line 149, ../scss/include/_skeleton.scss */
+.iosbackbutton:after {
+  -webkit-box-shadow: rgba(0, 0, 0, 0.2) 1px 0 0 inset, rgba(0, 0, 0, 0.2) 0 -1px 0 inset;
+  box-shadow: rgba(0, 0, 0, 0.2) 1px 0 0 inset, rgba(0, 0, 0, 0.2) 0 -1px 0 inset;
+}
+/* line 152, ../scss/include/_skeleton.scss */
+.iosbackbutton:before {
+  margin-left: -1px;
+  background: black none;
+}
+/* line 157, ../scss/include/_skeleton.scss */
+.iosbackbutton.active:after {
+  background-image: none;
+  background-color: black;
+  background-image: -webkit-gradient(linear, 0% 0%, 100% 100%, color-stop(0%, #262627), color-stop(50%, #0d0d0d), color-stop(51%, #000000), color-stop(100%, #000000));
+  background-image: -webkit-linear-gradient(left top, #262627, #0d0d0d 50%, #000000 51%, #000000);
+  background-image: linear-gradient(left top, #262627, #0d0d0d 50%, #000000 51%, #000000);
+}
+/* line 160, ../scss/include/_skeleton.scss */
+.iosbackbutton.active:before {
+  background-color: black;
+}

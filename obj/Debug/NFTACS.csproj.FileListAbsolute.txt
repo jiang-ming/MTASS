@@ -1,0 +1,10 @@
+C:\inetpub\wwwroot\NFTACS\bin\NFTACS.dll
+C:\inetpub\wwwroot\NFTACS\bin\NFTACS.pdb
+C:\inetpub\wwwroot\NFTACS\obj\Debug\ResolveAssemblyReference.cache
+C:\inetpub\wwwroot\NFTACS\obj\Debug\NFTACS.dll
+C:\inetpub\wwwroot\NFTACS\obj\Debug\NFTACS.pdb
+C:\inetpub\wwwroot\MTASS\bin\NFTACS.dll
+C:\inetpub\wwwroot\MTASS\bin\NFTACS.pdb
+C:\inetpub\wwwroot\MTASS\obj\Debug\ResolveAssemblyReference.cache
+C:\inetpub\wwwroot\MTASS\obj\Debug\NFTACS.dll
+C:\inetpub\wwwroot\MTASS\obj\Debug\NFTACS.pdb

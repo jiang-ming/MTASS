@@ -1,0 +1,21 @@
+#name,			caption,			type,		required(Y)/readonly(R),field size,		control size, 	sql-data-source-name,		code field,	descrip field,	sort field,	lookup?(Y), cache?(Y)
+#header,Component Integrity
+Component_Integrity,Component Integrity,Integer,,						,				,				SqlDomainIntegrity,CODE,DESCRIP,DisplayOrder,Y,Y
+Comments1,		Comments,			String,		,						2000,			4L,,,,,,
+#header,Condition
+Condition,		Condition,			Integer,	,						,				,				SqlDomainCondition,CODE,DESCRIP,DisplayOrder,Y,Y
+Comments2,		Comments,			String,		,						2000,			4L,,,,,,
+#header,Pictures
+Picture1,		Picture,			String,		R,						50,				,,,,,,
+Picture2,		Picture,			String,		R,						50,				,,,,,,
+Picture3,		Picture,			String,		R,						50,				,,,,,,
+Comments3,		Comments,			String,		,						2000,			4L,,,,,,
+#header,Contractor Notes
+VARIANCE,		Variance,			String,		,						,				,				SqlDomainYesNoText,CODE,DESCRIP,DisplayOrder,N,N
+VARIANCE_DESC,	Variance Description,String,	,						2000,			4L,,,,,,
+INOUT,			In/Out Contract,	String,		,						,				,				SqlDomainInOut,CODE,DESCRIP,DisplayOrder,N,N
+COMPLIANCE_PLAN,Compliance Plan,	String,		,						2000,			4L,,,,,,
+COST,			Cost,				Double,		,						100,			,,,,,,
+COMPLETE_BY,	Complete By,		Date,		,						,				,,,,,,
+ContractorNotes,Contractor Notes,	String,		,						2000,			4L,,,,,,
+

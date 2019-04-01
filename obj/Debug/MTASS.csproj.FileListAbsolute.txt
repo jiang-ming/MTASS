@@ -1,0 +1,4 @@
+C:\inetpub\wwwroot\MTASS\bin\MTASS.dll
+C:\inetpub\wwwroot\MTASS\bin\MTASS.pdb
+C:\inetpub\wwwroot\MTASS\obj\Debug\MTASS.dll
+C:\inetpub\wwwroot\MTASS\obj\Debug\MTASS.pdb

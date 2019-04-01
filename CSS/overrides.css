@@ -1,0 +1,186 @@
+/* Custome Style Overrides */
+
+/* Remove margin from first element in content */
+.ui-content>:first-child {
+	margin-top: 0;
+}
+
+/* Prevent overlapping elements */
+.ui-content .ui-listview {
+	margin: 10px 0;
+}
+
+/* Reduce excessive whitespace */
+.ui-listview-filter-inset {
+	margin: -5px;
+}
+
+/* Message style */
+.message {
+	background: #F1FAA5;
+	border-radius: .6em;
+}
+
+/* Darken checkbox */
+.ui-icon-checkbox-off {
+	background: #aaa;
+}
+
+/* Remove focus state on readonly elements */
+[readonly], .ui-input-text[readonly] {
+	box-shadow: none;
+	-webkit-box-shadow: none;
+	border: 1px solid #ddd;
+}
+
+/* Grid styles */
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+h3.ui-bar-b {
+	padding: .25em .8em;
+	margin: 0;
+}
+
+.ui-grid-a {
+	margin-top: -1px;
+	background: #fff;
+	border: 1px solid #ddd;
+}
+
+.ui-block-a, .ui-block-b {
+	padding: .5em 1em;
+}
+
+.ui-grid-a > :nth-child(n) {
+	width: auto;
+	margin: 0;
+}
+
+.ui-grid-a .ui-block-a {
+	width: 30%;
+	border-right: 1px solid #ddd;
+	font-weight: bold;
+}
+
+.ui-grid-a .ui-block-b {
+	width: 70%;
+	margin: 0 0 0 -1px;
+	border-left: 1px solid #ddd;
+}
+
+.ui-block-b .ui-btn {
+	margin: 0;
+}
+
+.ui-block-b textarea {
+	margin: 0;
+	height: 80px;
+	width: 100%;
+}
+
+.ui-block-b .ui-input-text {
+	margin: 0;
+}
+
+/* 500px = Stack grid */
+@media screen and (max-width: 500px) {
+	.ui-grid-a .ui-block-a  {
+		float: none;
+		padding-bottom: .25em;
+		width: auto;
+		border-right: 0;
+	}
+
+	.ui-grid-a .ui-block-b {
+		float: none;
+		margin: 0;
+		padding-top: 0;
+		width: auto;
+		border-left: 0;
+	}
+}
+
+/* Popup Styles */
+
+.ui-popup-container .ui-content p, .ui-popup-container .ui-content h4 {
+	margin: 0 0 1em 0;
+}
+
+.ui-popup-container h4 {
+	padding: .25em .8em;
+	border-radius: .6em;
+}
+
+.thumb120 {
+	max-width: 120px;
+}
+
+input[type="file"] {
+	width: auto !important;
+}
+
+/* Asset popup styles (override responsive styles) */
+.ui-popup-container .ui-block-a  {
+	float: left;
+	padding: .5em 1em;
+	width: 10%;
+	border-right: 1px solid #ddd;
+}
+
+.ui-popup-container .ui-block-b {
+	float: left;
+	padding: .5em 1em;
+	margin: 0 0 0 -1px;
+	width: 90%;
+	border-left: 1px solid #ddd;
+}
+
+/* image upload control */
+.replace-image-button .ui-btn-inner 
+{
+    padding: 0.3em 10px;
+}
+.replace-image-button .ui-btn-inner  .ui-btn-text
+{
+    font-size: 14px;
+}
+.ul-li-image-bubble
+{
+    height: 16px;
+    position: absolute;
+    margin-left: 5px;
+    margin-top: 1px;
+}
+
+/* =============================
+   Grey out
+================================*/
+#pagegreyout
+{
+    display: none;
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 2147483640;
+    background: black;
+    background-color: Black;
+    filter: alpha(Opacity=60);
+    opacity: 0.60;
+    -moz-opacity: 0.60;
+    -khtml-opacity: 0.60;
+}
+* html #pagegreyout
+{
+    position: absolute;
+}
+textarea {
+    min-width: 250px;
+    /* multi-line text input - disable resize in chrome */
+    resize: none;
+}

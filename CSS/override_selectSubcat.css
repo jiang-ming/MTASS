@@ -1,0 +1,25 @@
+﻿/* Message style */
+.message {
+	background: #F1FAA5;
+	border-radius: .6em;
+}
+
+li.ui-btn
+{
+    border-bottom: 0px solid rgb(204, 204, 204);
+    border-right: 0px solid rgb(204, 204, 204);
+    border-left: 0px solid rgb(204, 204, 204);
+}
+
+/* disable button text ellipsis */
+.ui-btn-text, .ui-btn-text a
+{
+    white-space:normal !important;
+    text-overflow: visible !important;
+}
+
+.divider-big-text
+{
+    font-size: 1.2em;
+}
+

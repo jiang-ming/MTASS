@@ -1,0 +1,209 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using WebMap.Web;
+using System.Web.Security;
+using System.Configuration;
+//using AjaxControlToolkit;
+//using RealWorld.Grids;
+using Wendel;
+using System.IO;
+using CrystalDecisions.Shared;
+using CrystalDecisions.CrystalReports.Engine;
+using System.Data;
+using System.Data.SqlClient;
+using System.Data.OleDb;
+public partial class ReportPrintWorkSheet : System.Web.UI.Page
+{
+    #region module variables
+    //private const string m_fc_prefix = "BP";
+    //private string m_SiteAccess_ClassLabel = ConfigurationManager.AppSettings[m_fc_prefix + "_m_LayerName"];
+    //private string m_FeatureClassTable = ConfigurationManager.AppSettings[m_fc_prefix + "_m_TableName"];
+    //private string m_SiteAccess_LookupClassID = ConfigurationManager.AppSettings[m_fc_prefix + "_m_LookupClassID"];
+    //private string m_FeatureClassDBConnection = ConfigurationManager.AppSettings[m_fc_prefix + "_m_FeatureClassDBConnection"];
+    //private string m_LookupTablesDBConnection = ConfigurationManager.AppSettings[m_fc_prefix + "_m_LookupTablesDBConnection"];
+    //private string m_QueryStringSelectKey = ConfigurationManager.AppSettings[m_fc_prefix + "_m_queryStringSelectKey"];
+    //private string m_FeatureClassTimeStampField = ConfigurationManager.AppSettings[m_fc_prefix + "_m_FeatureClassTimeStampField"];
+    //private string m_AttachmentTable = ConfigurationManager.AppSettings[m_fc_prefix + "_m_AttachmentTable"];
+    //private string m_AttachmentVPath = ConfigurationManager.AppSettings[m_fc_prefix + "_m_AttachmentVPath"];
+
+    //private string m_RelateTableName = ConfigurationManager.AppSettings[m_fc_prefix + "_m_RelateTableName"];
+    //private string m_RelateTableForeignKey = ConfigurationManager.AppSettings[m_fc_prefix + "_m_RelateTableForeignKey"];
+    //private string m_RelateTableSort = ConfigurationManager.AppSettings[m_fc_prefix + "_m_RelateTableSort"];
+
+    //private string m_RelateTableName2 = ConfigurationManager.AppSettings[m_fc_prefix + "_m_RelateTableName2"];
+    //private string m_RelateTableForeignKey2 = ConfigurationManager.AppSettings[m_fc_prefix + "_m_RelateTableForeignKey2"];
+    //private string m_RelateTableSort2 = ConfigurationManager.AppSettings[m_fc_prefix + "_m_RelateTableSort2"];
+
+    //private string m_FireMasterTable = ConfigurationManager.AppSettings[m_fc_prefix + "_m_FireMasterTable"];
+    //private string m_FireMasterTimeStampField = ConfigurationManager.AppSettings[m_fc_prefix + "_m_FireMasterTimeStampField"];
+    //private string m_FireInspectionTable = ConfigurationManager.AppSettings[m_fc_prefix + "_m_FireInspectionTable"];
+    //private string m_FireInspectionTimeStampField = ConfigurationManager.AppSettings[m_fc_prefix + "_m_FireInspectionTimeStampField"];
+    //private string m_BackflowMasterTable = ConfigurationManager.AppSettings[m_fc_prefix + "_m_BackflowMasterTable"];
+    //private string m_BackflowMasterTimeStampField = ConfigurationManager.AppSettings[m_fc_prefix + "_m_BackflowMasterTimeStampField"];
+    //private string m_BackflowMasterInspectorField = ConfigurationManager.AppSettings[m_fc_prefix + "_m_BackflowMasterInspectorField"];
+    //private string m_BackflowInspectionTable = ConfigurationManager.AppSettings[m_fc_prefix + "_m_BackflowInspectionTable"];
+    //private string m_BackflowInspectionTimeStampField = ConfigurationManager.AppSettings[m_fc_prefix + "_m_BackflowInspectionTimeStampField"];
+    //private string m_BackflowInspectionInspectorField = ConfigurationManager.AppSettings[m_fc_prefix + "_m_BackflowInspectionInspectorField"];
+    //private string m_BackflowMasterReadOnlyView = "V_BFMaster_with_last_inspection";
+
+    //protected const String m_ac_PageTitle = "Fire Inspection";
+
+    private ReportDocument m_RPT;
+    private String m_tablename = "Q_ProjectInfo";
+    //private String m_tablename2 = "V_BFMaster_with_last_inspection";
+    private String m_rptFileName = "SurveyReport01.rpt";
+
+    #endregion
+    #region page events
+    protected override void OnPreLoad(EventArgs e)
+    {
+        base.OnPreLoad(e);
+        //Cache Lookup Table on page preload
+        //***This must be inserted before you access the DetailsView including DetailsView.Rows.Count
+        if (!IsPostBack)
+        {
+        }
+        else
+        {
+        }
+    }
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        //check if IIS HTTP sesion has expired - an expired session will cause page error since all session variables are no longer valid
+        if (Session["CurrentEditor"] == null)
+        {
+            FormsAuthentication.RedirectToLoginPage(string.Format("NoByPass=TRUE&MSG={0}", Page.Server.UrlEncode("You must login before viewing or editing survey client.")));
+        }
+        // Limit for print order sheet
+        if (!(PermissionHelper.IsRoleEnabled("ProjectAdmin") || PermissionHelper.IsRoleEnabled("ProjectAdminLimited") || PermissionHelper.IsRoleEnabled("ProjectStatusManager")))
+        {
+            Response.Write("<br><span style='color:red; font-weight:bold;'>&nbsp;Sorry. Your user account does not have permission to print Order Form.</span><br>");
+            Response.End();
+            return;
+        }
+        if (!Page.IsPostBack && !Page.IsCallback)
+        {
+            OneTimeInit();
+        }
+        EverytimeInit();
+    }
+    private void OneTimeInit()
+    {
+        //anything that get saved into session or viewstate can be put here.
+        //all javascript initialization needs to be re-applied after every postback
+        txtWDSurveyWorkSheet.Text = AESUtil.DecryptString(Request["OBJID"].ToWSSafeString(true, true, true, true, true));
+        //txtWDSurveyWorkSheet.Text = "17476";       
+        exportPDF();
+    }
+    private void EverytimeInit()
+    {
+        //inject JS --> show loading animation when form is being processed
+        //....we removed ShowLoading from OnClientClick events on the aspx page
+        //....the code is added here (hijacking asp.net ValidatorOnSubmit) to make sure that ShowLoading() is called only if page is successfully submitted.
+        string jsname = "OnSubmitScriptif (!Page.ClientScript.IsOnSubmitStatementRegistered(jstype, jsname))";
+        string jstext = "";
+        jstext += "if (typeof(ValidatorOnSubmit) == 'function' && ValidatorOnSubmit() == false)return false;" + Environment.NewLine;
+        jstext += "else" + Environment.NewLine;
+        jstext += "{" + Environment.NewLine;
+        jstext += "  ShowLoading();" + Environment.NewLine;
+        jstext += "}" + Environment.NewLine;
+        jstext += "return true;" + Environment.NewLine;
+        Page.ClientScript.RegisterOnSubmitStatement(Page.GetType(), jsname, jstext);
+
+        //if (!IsEditEnabled()) addJS("jsIsEditEnabled", "var jsIsEditEnabled = false;");
+        //else addJS("jsIsEditEnabled", "var jsIsEditEnabled = true;");
+    }
+    private void exportPDF()
+    {
+        //after the report prompts use for parameter, it will render the report
+        //upon finish report rendering, we'll steal parameter from the report and force PDF export from here
+
+        //********Export the report to PDF file
+        MemoryStream oStream = default(MemoryStream);
+        //= New MemoryStream
+        try
+        {
+            //load data - need to manually load data as crystal report 13 runs in a separate process and will not use impersonated identity from web.config
+            OleDbConnection conn = new OleDbConnection(ConfigurationManager.ConnectionStrings["_SiteAccess"].ConnectionString);
+            String sql = string.Format("SELECT * FROM R_Control_SubCategory_List WHERE Building_ID =1");
+            OleDbDataAdapter da = new OleDbDataAdapter(sql, conn);
+            DataSet ds = new DataSet();
+            da.Fill(ds, m_tablename);
+            //sql = string.Format("SELECT * FROM [{0}] WHERE FireUID = {1}", m_tablename2, txtWDSurveyWorkSheet.Text);
+            //da = new SqlDataAdapter(sql, conn);
+            //da.Fill(ds, m_tablename2);
+
+            //create report object
+            m_RPT = new ReportDocument();
+            m_RPT.Load(Server.MapPath("./Report/" + m_rptFileName));
+            m_RPT.SetDataSource(ds);
+
+            //set parameter
+            //m_RPT.SetParameterValue("OBJECTID", Convert.ToInt32(txtWDSurveyWorkSheet.Text));
+            m_RPT.SetParameterValue("ShowEquipmentInfo", true);
+            m_RPT.SetParameterValue("ShowEquipmentPicture", true);
+            m_RPT.SetParameterValue("ShowSafetySurvey", true);
+            m_RPT.SetParameterValue("ShowSafetySurveyPicture", true);
+            //m_RPT.SetParameterValue("R_Control_SubCategory_List.Building_ID", 1);
+            m_RPT.RecordSelectionFormula = "{R_Control_SubCategory_List.Building_ID}=1";
+            // Export the report
+            oStream = (MemoryStream)m_RPT.ExportToStream(ExportFormatType.PortableDocFormat);
+            Response.Clear();
+            Response.Buffer = true;
+            Response.ContentType = "application/pdf";
+            //Response.AddHeader("Content-Disposition", "attachment; filename=MeterReport.pdf")
+            Response.BinaryWrite(oStream.ToArray());
+            Response.End();
+        } catch (Exception err)
+        {
+            Response.Write("<BR>");
+            Response.Write(err.Message.ToString());
+        }
+    }
+    #endregion
+#region other supporting routine
+    private void addJS(String key, String js, Boolean waitJQueryReady = false)
+    {
+        if (!waitJQueryReady)
+        {
+            ScriptManager.RegisterClientScriptBlock(Page, Page.GetType(), key, js, true);
+        }
+        else
+        {
+            String jsJQ = String.Format(" $(document).ready(function () {{ {0} }});", js);
+            ScriptManager.RegisterClientScriptBlock(Page, Page.GetType(), key, jsJQ, true);
+        }
+    }
+#endregion
+
+    #region permission
+    //protected bool CheckEditPermissionOK()
+    //{//not used
+    //    //If Session("UserDB_EditHydrant") Then
+    //    try
+    //    {
+    //        if ((bool)Session["AllowEdit"])
+    //        {
+    //            return true;
+    //        }
+    //        else
+    //        {
+    //            return false;
+    //        }
+    //    }
+    //    catch (Exception)
+    //    {
+    //        return false;
+    //    }
+    //}
+
+    //protected bool IsEditEnabled()
+    //{
+    //    return CheckEditPermissionOK();
+    //}
+    #endregion
+}

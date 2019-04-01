@@ -1,0 +1,29 @@
+#name,			caption,			type,		required(Y)/readonly(R),field size,		control size, 	sql-data-source-name,		code field,	descrip field,	sort field,	lookup?(Y), cache?(Y)
+#header,General Information
+Manufacturer,	Manufacturer,		String,		,						50,				,,,,,,
+Model_Number,	Model Number,		String,		,						50,				,,,,,,
+Part_Number,	Part Number,		String,		,						50,				,,,,,,
+Service_Size,	Service Size,		String,		,						25,				,,,,,,
+Capacity,		Capacity,			String,		,						25,				,,,,,,
+SCFM,			SCFM,				String,		,						25,				,,,,,,
+Pressure_Rating,Pressure Rating,	String,		,						25,				,,,,,,
+Temperature_Rating,Temperature Rating,String,	,						25,				,,,,,,
+Current_Pressure,Current Pressure,  String,		,						25,				,,,,,,
+Current_Temperature,Current Temperature,String,	,						25,				,,,,,,
+Material,		Material,			String,		,						50,				,,,,,,
+Number_of_Stages,Number of Stages,	Integer,	,						,				,				SqlDomainNumStage,CODE,DESCRIP,DisplayOrder,Y,Y
+Fire_suppression_system_type,Fire suppression system type,String,,		50,				,,,,,,
+Equipment_Location,Equipment Location,String,	,						50,				,,,,,,
+Expiration_Date,Expiration Date,	Date,		,,,,,,,,
+Special_Permit_Number,Special Permit Number,String,,					25,				,,,,,,
+Quantity_of_nozzles_connectors,Quantity of nozzles/connectors,Integer,, ,				,				SqlDomainNumNozzle,CODE,DESCRIP,DisplayOrder,Y,Y
+Defueling_Type,	Defueling Type,		Integer,	,						,				,				SqlDomainDeFuel,CODE,DESCRIP,DisplayOrder,Y,Y
+Associated_Equipment,Associated Equipment,String,,						50,				,,,,,,
+Voltage,		Voltage,			String,		,						25,				,,,,,,
+Enclosure_NEMA_rating,Enclosure NEMA rating,String,,					25,				,,,,,,
+Last_Inspection,Last Inspection,	Date,		,,,,,,,,
+Comments,		Comments,			String,		,						2000,			4L,,,,,,
+#header,Pictures
+Picture1,		Picture,			String,		R,						50,				,,,,,,
+Picture2,		Picture,			String,		R,						50,				,,,,,,
+Picture3,		Picture,			String,		R,						50,				,,,,,,
